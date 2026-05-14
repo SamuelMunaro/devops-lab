@@ -1,0 +1,23 @@
+name: DevOps Lab CI
+
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    run-python:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Set up python
+          uses: actions/setu-python@v4
+          with:
+            python-version: '3.10'
+    
+        - name: Run script
+          run: python app/main.py
